@@ -1,6 +1,5 @@
 // src/App.tsx
-import React from 'react';
-import { DashboardPage } from './DashboardPage';
+import { DashboardPage } from './pages/ProviderDashboard';
 
 function App() {
   return (

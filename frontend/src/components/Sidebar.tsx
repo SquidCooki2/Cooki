@@ -1,6 +1,6 @@
 // src/Sidebar.tsx
 import React from 'react';
-import type { UserProfile } from './types';
+import type { UserProfile } from '../types';
 import { 
   LayoutDashboard, 
   Settings, 
