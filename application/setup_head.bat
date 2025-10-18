@@ -24,7 +24,6 @@ REM === Install packages inside the environment using explicit python ===
 REM === Start the Ray head node using environment python -m ray ===
 echo.
 echo Starting Ray head node...
-"%ENV_PYTHON%" -m ray start --head --port=6379
+"%CONDA_DIR%\envs\%ENV_NAME%\Scripts\ray.exe" start --head --port=6379 --dashboard-port=%DASHBOARD_PORT%
 echo.
 echo ✅ Ray head node started. Keep this window open.
-pause

@@ -24,7 +24,6 @@ REM === Install packages inside the environment using explicit python ===
 REM === Start Ray worker connecting to head node ===
 echo.
 echo Connecting to head node at %HEAD_ADDRESS%...
-"%ENV_PYTHON%" -m ray start --address="%HEAD_ADDRESS%"
+"%CONDA_DIR%\envs\%ENV_NAME%\Scripts\ray.exe" start --address="127.0.0.1:%PORT%"
 echo.
 echo ✅ Ray worker started. Keep this window open.
-pause

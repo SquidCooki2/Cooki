@@ -1,21 +1,33 @@
 import ray
-import time
+import numpy as np
+import os
 import socket
 
-ray.init(address="auto")
+ray.init(address="auto")  # Connect to your local cluster
 
 @ray.remote
-def heavy_compute(x):
-    # pretend to do work
-    time.sleep(2)
-    return (socket.gethostname(), x * x)
+def task(x):
+    worker = os.environ.get("WORKER_NAME", "unknown")
+    print(f"From {worker}: starting {x}")
+    
+    size = 3000
+    A = np.random.rand(size, size)
+    B = np.random.rand(size, size)
+    C = A.dot(B)
+    
+    print(f"From {worker}: done {x}")
+    return {
+        "task": x,
+        # "output": C,
+        "worker_name": os.getenv("WORKER_NAME", "unknown"),
+        "hostname": socket.gethostname()
+    }
 
-tasks = [heavy_compute.remote(i) for i in range(8)]
-results = ray.get(tasks)
+results = ray.get([task.remote(i) for i in list(range(8))])
 
-print("\n=== Distributed Computation Results ===")
-for host, value in results:
-    print(f"From {host}: {value}")
+print("=== Distributed Computation Results ===")
+for r in results:
+    print(r)
 
 print("\nCluster resources:")
 print(ray.cluster_resources())
