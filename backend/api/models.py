@@ -2,44 +2,58 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-from django.db import models
-from django.contrib.auth.models import User
-
 class Provider(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    gpu_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, null=True, blank=True)
+    gpu_name = models.CharField(max_length=255)
     vram_gb = models.FloatField()
-    price_per_min = models.FloatField(default=0.05)
+    base_clock_ghz = models.FloatField(default=0)
+    boost_clock_ghz = models.FloatField(default=0)
+    cuda_cores = models.IntegerField(default=0)
+
     is_online = models.BooleanField(default=False)
-    total_earnings = models.FloatField(default=0.0)
-    rating = models.FloatField(default=0.0)
+    current_job = models.ForeignKey('Job', on_delete=models.SET_NULL, null=True, blank=True, related_name='active_provider')
+
+    # Dashboard stats
+    total_earned = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    jobs_completed = models.IntegerField(default=0)
+    uptime_percent = models.FloatField(default=0)
+    rating = models.FloatField(default=0)
+
+    # Live telemetry
+    gpu_usage = models.FloatField(default=0)         # %
+    temperature_c = models.FloatField(default=0)     # °C
 
     def __str__(self):
         return f"{self.user.username} ({self.gpu_name})"
 
 class Job(models.Model):
-    TASK_TYPES = [
-        ("ESRGAN", "Image Upscaling"),
-        ("SD_TURBO", "Text-to-Image"),
-    ]
-    STATUS_CHOICES = [
-        ("QUEUED", "Queued"),
-        ("ASSIGNED", "Assigned"),
-        ("RUNNING", "Running"),
-        ("SUCCEEDED", "Succeeded"),
-        ("FAILED", "Failed"),
-    ]
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='customer_jobs')
+    provider = models.ForeignKey(Provider, on_delete=models.SET_NULL, null=True, related_name='provider_jobs')
 
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="jobs")
-    provider = models.ForeignKey(Provider, on_delete=models.SET_NULL, null=True, blank=True)
-    task_type = models.CharField(max_length=20, choices=TASK_TYPES)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="QUEUED")
-    input_uri = models.CharField(max_length=500)
-    output_uri = models.CharField(max_length=500, blank=True, null=True)
-    cost_cents = models.IntegerField(default=0)
+    job_code = models.CharField(max_length=10, unique=True)  # e.g., "J-8067"
+    task_type = models.CharField(max_length=50, choices=[
+        ('ML_TRAINING', 'ML Training'),
+        ('IMAGE_UPSCALE', 'Image Upscaling'),
+        ('AI_RENDER', 'AI Rendering'),
+    ])
+    status = models.CharField(max_length=20, choices=[
+        ('QUEUED', 'Queued'),
+        ('RUNNING', 'Running'),
+        ('SUCCEEDED', 'Succeeded'),
+        ('FAILED', 'Failed'),
+    ], default='QUEUED')
+
+    input_uri = models.TextField()
+    output_uri = models.TextField(null=True, blank=True)
+
+    progress_percent = models.FloatField(default=0)
+    time_elapsed = models.DurationField(null=True, blank=True)
+    earnings_usd = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
     created_at = models.DateTimeField(auto_now_add=True)
     started_at = models.DateTimeField(null=True, blank=True)
     finished_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.task_type} - {self.status} ({self.id})"
+        return f"{self.job_code} - {self.task_type}"

@@ -30,4 +30,5 @@ urlpatterns = [
     path('api/jobs/', views.get_jobs),
     path('api/jobs/create/', views.create_job),
     path('admin/', admin.site.urls),
+    path('api/providers/<int:provider_id>/dashboard/', views.provider_dashboard),
 ]
