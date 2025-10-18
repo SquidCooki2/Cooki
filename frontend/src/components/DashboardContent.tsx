@@ -1,6 +1,6 @@
 // src/DashboardContent.tsx
 import React from 'react';
-import type { DashboardData, GpuInfo, Job } from './types';
+import type { DashboardData, GpuInfo, Job } from '../types';
 import { DollarSign, CheckCircle, Cpu, Server } from 'lucide-react';
 
 // --- Reusable StatCard Component ---
