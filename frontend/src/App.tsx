@@ -8,6 +8,7 @@ import Wallet from './pages/Wallet';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import ProviderDashboard from './pages/ProviderDashboard';
+import './App.css';
 
 function App() {
   return (

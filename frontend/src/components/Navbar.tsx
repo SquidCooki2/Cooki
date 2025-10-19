@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import cookiLogo from "../assets/cooki_logo.png";
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -38,44 +39,15 @@ const Navbar: React.FC = () => {
       {/* Logo */}
       <div>
         <div style={{ padding: '0 2rem', marginBottom: '3rem' }}>
-          <div style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: 700, 
-            color: 'white',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '2px'
-          }}>
-            c
-            <span style={{ display: 'inline-flex', gap: '-2px', margin: '0 -4px' }}>
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <circle cx="16" cy="16" r="14" stroke="white" strokeWidth="2"/>
-                <circle cx="16" cy="16" r="4" fill="white"/>
-                <rect x="15" y="6" width="2" height="6" fill="white" rx="1"/>
-                <rect x="15" y="20" width="2" height="6" fill="white" rx="1"/>
-                <rect x="6" y="15" width="6" height="2" fill="white" rx="1"/>
-                <rect x="20" y="15" width="6" height="2" fill="white" rx="1"/>
-              </svg>
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <circle cx="16" cy="16" r="14" stroke="white" strokeWidth="2"/>
-                <circle cx="16" cy="16" r="4" fill="white"/>
-                <rect x="15" y="6" width="2" height="6" fill="white" rx="1"/>
-                <rect x="15" y="20" width="2" height="6" fill="white" rx="1"/>
-                <rect x="6" y="15" width="6" height="2" fill="white" rx="1"/>
-                <rect x="20" y="15" width="6" height="2" fill="white" rx="1"/>
-              </svg>
-            </span>
-            ki
-          </div>
-          <div style={{ 
-            fontSize: '0.65rem', 
-            fontWeight: 400, 
-            letterSpacing: '3px', 
-            marginTop: '-8px',
-            color: '#a8a8b3'
-          }}>
-            GPU SERVICES
-          </div>
+          <img 
+            src={cookiLogo} 
+            alt="Cooki GPU Services"
+            style={{ 
+              width: '160px',
+              maxWidth: '100%',
+              height: 'auto'
+            }}
+          />
         </div>
 
         {/* Navigation Links */}

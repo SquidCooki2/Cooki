@@ -1,19 +1,293 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Global white background for all pages */
+* {
+  box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff !important;
+  color: #222;
+  min-height: 100vh;
+}
+
+#root {
+  background: #fff !important;
+  min-height: 100vh;
+}
+
+.App {
+  background: #fff !important;
+  min-height: 100vh;
+}
+
+/* All page containers should have white background */
+.page-container,
+.home-bg,
+.provider-dashboard,
+.user-dashboard,
+.wallet,
+.login,
+.signup {
+  background: #fff !important;
+  min-height: calc(100vh - 4rem);
+}
+
+/* Navbar styles */
+nav, .navbar, .sidebar {
+  background: #1a1625 !important;
+}
+
+/* Sidebar (Navbar) custom styles */
+.navbar {
+  width: 270px;
+  background-color: #1a1625 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 0;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 100;
+}
+
+.navbar img {
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+}
+
+.navbar a {
+  display: block;
+  padding: 0.875rem 1.5rem;
+  margin: 0.25rem 0;
+  background: transparent;
+  color: #a8a8b3;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.navbar a.active,
+.navbar a[aria-current="page"] {
+  background: white;
+  color: #1a1625;
+}
+
+.navbar a.active:not([href="/"]),
+.navbar a[aria-current="page"]:not([href="/"]) {
+  background: #4a4458;
+  color: white;
+}
+
+.navbar button {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: white;
+  color: #1a1625;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Main content area (to avoid overlap with sidebar) */
+.main-content,
+.page-container {
+  margin-left: 270px;
+  min-height: 100vh;
+  padding: 2rem;
+  background: #fff !important;
+}
+
+/* Home page custom styles (for GPU cards, beams, etc.) */
+.home-bg {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff !important;
+  margin-left: 270px;
+  padding: 2rem;
+}
+
+/* Provider Dashboard specific styles */
+.provider-dashboard {
+  margin-left: 270px;
+  padding: 2rem;
+  background: #fff !important;
+}
+
+.provider-dashboard h1 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 2rem;
+}
+
+.provider-dashboard section {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.provider-dashboard h2 {
+  font-size: 1.25rem;
+  color: #222;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #1a1625;
+  padding-bottom: 0.5rem;
+}
+
+.provider-dashboard p {
+  margin: 0.5rem 0;
+  color: #444;
+}
+
+.provider-dashboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.provider-dashboard li {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  color: #444;
+}
+
+/* User Dashboard, Wallet, Login, Signup */
+.user-dashboard,
+.wallet,
+.login,
+.signup {
+  margin-left: 270px;
+  padding: 2rem;
+  background: #fff !important;
+}
+
+.user-dashboard h1,
+.wallet h1,
+.login h1,
+.signup h1 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+.user-dashboard p,
+.wallet p,
+.login p,
+.signup p {
+  color: #444;
+}
+
+/* GPU cards animations and styles */
+.gpu-cards {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem;
+  filter: brightness(0.7);
+}
+
+.gpu-card {
+  width: 280px;
+  height: 420px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 0 40px rgba(147, 112, 219, 0.3), 0 0 80px rgba(138, 43, 226, 0.2);
+  animation: gpuFloat 6s ease-in-out infinite;
+}
+
+.gpu-card.center {
+  box-shadow: 0 0 60px rgba(186, 85, 211, 0.5), 0 0 120px rgba(138, 43, 226, 0.3);
+}
+
+.gpu-fan {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 160, 255, 0.3), rgba(147, 112, 219, 0.1));
+  border: 2px solid rgba(186, 85, 211, 0.4);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gpu-brand {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.home-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+@keyframes gpuFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes beam {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Remove any default Vite styling */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
