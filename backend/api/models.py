@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
 
 # Create your models here.
 class Provider(models.Model):
@@ -57,3 +58,41 @@ class Job(models.Model):
 
     def __str__(self):
         return f"{self.job_code} - {self.task_type}"
+    
+
+class Wallet(models.Model):
+    provider = models.OneToOneField(Provider, on_delete=models.CASCADE, related_name="wallet")
+    available_balance = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    this_month_spending = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+
+    def __str__(self):
+        return f"Wallet(provider_id={self.provider_id})"
+
+
+class Invoice(models.Model):
+    provider = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name="invoices")
+    # store billing period as YYYY-MM
+    month = models.CharField(max_length=7)  # e.g., "2025-02"
+    amount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+
+    class Meta:
+        ordering = ["-month"]
+        unique_together = ("provider", "month")
+
+    def __str__(self):
+        return f"Invoice(provider_id={self.provider_id}, month={self.month})"
+
+
+class PaymentMethod(models.Model):
+    CARD_TYPES = (("VISA", "Visa"), ("MC", "Mastercard"))
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    provider = models.ForeignKey(Provider, on_delete=models.CASCADE, related_name="payment_methods")
+    type = models.CharField(max_length=8, choices=CARD_TYPES)
+    last_four = models.CharField(max_length=4)
+    expiry_month = models.IntegerField()  # 1..12
+    expiry_year = models.IntegerField()   # 4-digit year
+    is_default = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.get_type_display()} ••••{self.last_four}"

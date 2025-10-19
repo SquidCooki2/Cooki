@@ -1,25 +1,40 @@
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 
 const UserDashboard = () => {
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: "Hello! I'm Cooki, your virtual assistant." },
-    { role: 'user', content: "Hey, I need some power to run Call of Duty right now." },
-    { role: 'assistant', content: "Perfect, I'll get that going for you. Please hold on one moment.", loading: true }
+    { role: 'assistant', content: "Hello! I'm Cooki, your virtual assistant. Ask me questions about pricing, recommended computer power for different jobs, and how you can start hosting your GPU for a return!" }
   ]);
   const [input, setInput] = useState('');
 
-  const handleSend = () => {
-    if (input.trim()) {
-      setMessages([...messages, { role: 'user', content: input }]);
-      setInput('');
-      // Simulate AI response
-      setTimeout(() => {
-        setMessages(prev => [...prev, { 
-          role: 'assistant', 
-          content: "I'm processing your request. This will just take a moment!",
-          loading: false
-        }]);
-      }, 1000);
+  const handleSend = async () => {
+    if (!input.trim()) return;
+
+    const userMsg = { role: 'user', content: input };
+    setMessages([...messages, userMsg]);
+    setInput('');
+
+    try {
+      const res = await fetch("http://localhost:8000/api/chat/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input }),
+      });
+
+      const data = await res.json();
+
+      setMessages(prev => [
+        ...prev,
+        { role: 'assistant', content: data.reply }
+      ]);
+    } catch (err) {
+      console.error(err);
+      setMessages(prev => [
+        ...prev,
+        { role: 'assistant', content: "Sorry, something went wrong." }
+      ]);
     }
   };
 
@@ -54,6 +69,7 @@ const UserDashboard = () => {
         width: '100%'
       }}>
         {/* Messages Area */}
+        
         <div style={{
           flex: 1,
           overflowY: 'auto',
@@ -85,7 +101,7 @@ const UserDashboard = () => {
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
               }}>
-                {msg.content}
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
                 {msg.loading && (
                   <div style={{
                     marginTop: '0.75rem',

@@ -20,6 +20,8 @@ export interface GpuInfo {
   memoryUsed: number; // in GB
   memoryTotal: number; // in GB
   temp: number; // in Celsius
+  uptime: number;
+  rating: number;
 }
 
 export interface Job {
@@ -30,6 +32,8 @@ export interface Job {
   startedAt: string; // ISO 8601 date string
   duration?: string; // e.g., "2h 15m"
   cost?: number; // e.g., 0.45
+  time_elapsed: number;
+  earnings: number;
 }
 
 // This will be the shape of the combined data from all backend calls
