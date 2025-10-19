@@ -1,14 +1,14 @@
 // src/App.tsx
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import UserDashboard from './pages/UserDashboard';
-import Wallet from './pages/Wallet';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import ProviderDashboard from './pages/ProviderDashboard';
+import { Wallet } from './pages/Wallet';
 import './App.css';
+
 
 function App() {
   return (

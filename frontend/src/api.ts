@@ -1,6 +1,6 @@
 // src/api.ts
 import axios from "axios";
-import type { DashboardData, Job, GpuInfo, DashboardStats, UserProfile } from "./types";
+import type { DashboardData, Job, GpuInfo, DashboardStats, UserProfile, WalletData } from "./types";
 
 // base URL from .env (Vite)
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
@@ -76,9 +76,17 @@ export const fetchDashboardData = async (providerId: number = 1): Promise<Dashbo
         }))
       : [];
 
+    const wallet: WalletData = {
+      availableBalance: 0,
+      thisMonthSpending: 0,
+      invoices: [],
+      paymentMethods: []
+    }  
+
     const dashboard: DashboardData = {
       profile,
       stats,
+      wallet,
       gpuInfo,
       currentJob,
       recentJobs,

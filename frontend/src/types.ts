@@ -36,7 +36,28 @@ export interface Job {
 export interface DashboardData {
   profile: UserProfile;
   stats: DashboardStats;
+  wallet: WalletData;
   gpuInfo: GpuInfo;
   currentJob: Job | null; // A job might not always be running
   recentJobs: Job[];
+}
+
+export interface Invoice {
+  month: string;
+  amount: number;
+}
+
+export interface PaymentMethod {
+  id: string;
+  type: 'Visa' | 'Mastercard';
+  lastFour: string;
+  expiry: string;
+  isDefault: boolean;
+}
+
+export interface WalletData {
+  availableBalance: number;
+  thisMonthSpending: number;
+  invoices: Invoice[];
+  paymentMethods: PaymentMethod[];
 }
