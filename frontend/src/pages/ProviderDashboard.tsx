@@ -60,27 +60,21 @@ const ProviderDashboard: React.FC = () => {
       }}
     >
       {/* Top Section - Your GPU and Stats Cards */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.8fr 1fr",
-          gap: "1.5rem",
-          marginBottom: "2.5rem",
-        }}
-      >
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '1.8fr 1fr',
+        gap: '1.5rem',
+        marginBottom: '2.5rem'
+      }}>
         {/* Left Column - Your GPU */}
         <div>
-          <h2
-            style={{
-              fontSize: "2.25rem",
-              color: "#2d2d3a",
-              fontWeight: "700",
-              marginBottom: "1.25rem",
-              marginTop: 0,
-            }}
-          >
-            Your GPU
-          </h2>
+          <h2 style={{
+            fontSize: '2.25rem',
+            color: '#2d2d3a',
+            fontWeight: '700',
+            marginBottom: '1.25rem',
+            marginTop: 0
+          }}>Your GPU</h2>
 
           <div
             style={{
@@ -194,15 +188,13 @@ const ProviderDashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column - Stats Cards */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.25rem",
-            paddingTop: "4.5rem",
-          }}
-        >
+        {/* Right Column - Stats Cards (Top 4) */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.25rem',
+          paddingTop: '4.5rem'
+        }}>
           {/* Total Earned */}
           <div
             style={{
@@ -301,28 +293,22 @@ const ProviderDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Section - Current Job and Recent Jobs */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.8fr 1fr",
-          gap: "1.5rem",
-        }}
-      >
+      {/* Bottom Section - Current Job and Recent Jobs side by side */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '1.8fr 1fr',
+        gap: '1.5rem'
+      }}>
         {/* Left Column - Current Job and Recent Jobs */}
         <div>
           {/* Current Job */}
-          <h2
-            style={{
-              fontSize: "2.25rem",
-              color: "#2d2d3a",
-              fontWeight: "700",
-              marginBottom: "1.25rem",
-              marginTop: 0,
-            }}
-          >
-            Current Job
-          </h2>
+          <h2 style={{
+            fontSize: '2.25rem',
+            color: '#2d2d3a',
+            fontWeight: '700',
+            marginBottom: '1.25rem',
+            marginTop: 0
+          }}>Current Job</h2>
 
           <div
             style={{
@@ -416,17 +402,13 @@ const ProviderDashboard: React.FC = () => {
           </div>
 
           {/* Recent Jobs */}
-          <h2
-            style={{
-              fontSize: "2.25rem",
-              color: "#2d2d3a",
-              fontWeight: "700",
-              marginBottom: "1.25rem",
-              marginTop: 0,
-            }}
-          >
-            Recent Jobs
-          </h2>
+          <h2 style={{
+            fontSize: '2.25rem',
+            color: '#2d2d3a',
+            fontWeight: '700',
+            marginBottom: '1.25rem',
+            marginTop: 0
+          }}>Recent Jobs</h2>
 
           <div
             style={{
