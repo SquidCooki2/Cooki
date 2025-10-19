@@ -5,6 +5,8 @@ from .models import Provider, Job
 from .serializers import ProviderSerializer, JobSerializer
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+from .models import Provider, Wallet
+from .serializers import WalletSerializer
 
 @api_view(['GET'])
 def api_overview(request):
@@ -85,3 +87,24 @@ def provider_dashboard(request, provider_id):
     }
 
     return Response(data)
+
+@api_view(['GET'])
+def provider_wallet(request, provider_id: int):
+    provider = get_object_or_404(Provider, id=provider_id)
+    # ensure a wallet exists for this provider
+    wallet, _ = Wallet.objects.get_or_create(provider=provider)
+    data = WalletSerializer(wallet).data
+    return Response(data)
+
+@api_view(['POST'])
+def chat(request):
+    """
+    Simple echo bot. Expects JSON: { "message": "..." }
+    Returns: { "reply": "Echo: ..." }
+    Swap this logic later for real AI.
+    """
+    msg = (request.data or {}).get("message", "")
+    if not msg:
+        return Response({"reply": "I didn't get a message."}, status=200)
+    return Response({"reply": f"Echo: {msg}"}, status=200)
+
