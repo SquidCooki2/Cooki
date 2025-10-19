@@ -3,8 +3,14 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 
+type Message = {
+  role: string;
+  content: string;
+  loading?: boolean;
+};
+
 const UserDashboard = () => {
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: "Hello! I'm Cooki, your virtual assistant. Ask me questions about pricing, recommended computer power for different jobs, and how you can start hosting your GPU for a return!" }
   ]);
   const [input, setInput] = useState('');
