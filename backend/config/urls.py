@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.http import HttpResponse
-from django.urls import path, include
+from django.urls import path
 from api import views
 
 def api_root(request):
@@ -32,5 +32,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/providers/<int:provider_id>/dashboard/', views.provider_dashboard),
     path('api/providers/<int:provider_id>/wallet/', views.provider_wallet),
-    path('api/chat/', views.chat),
+    path("api/chat/", views.chat_view, name="chat"),
 ]

@@ -14,7 +14,7 @@ set GRPC_VERBOSITY=NONE
 set RAY_grpc_port_range=20000,21000
 
 REM === Start head node in a new terminal ===
-start "Ray Head" cmd /k "set WORKER_NAME=head && ray start --head --port=%PORT% --dashboard-port=%DASHBOARD_PORT% --block"
+start "Ray Head" cmd /k "set WORKER_NAME=head && ray start --head --port=%PORT% --dashboard-port=%DASHBOARD_PORT% --block --num-cpus=0"
 
 REM Wait a bit for head to start
 timeout /t 3 /nobreak >nul
