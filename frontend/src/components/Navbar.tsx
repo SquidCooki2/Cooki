@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import cookiLogo from "../assets/cooki_logo.png";
+import profilePic from "../assets/profile_pic.png";
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -59,8 +60,44 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Logout Button */}
+      {/* Bottom Section: Profile + Logout */}
       <div style={{ padding: '0 1rem' }}>
+        {/* Profile Section */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem',
+          padding: '1rem',
+          marginBottom: '1rem',
+          borderRadius: '8px',
+          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        }}>
+          <img 
+            src={profilePic}
+            alt="Profile"
+            style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              border: '2px solid rgba(168, 85, 211, 0.5)'
+            }}
+          />
+          <div style={{ flex: 1 }}>
+            <div style={{
+              color: '#fff',
+              fontWeight: '600',
+              fontSize: '1rem',
+              marginBottom: '0.25rem'
+            }}>John Doe</div>
+            <div style={{
+              color: '#a8a8b3',
+              fontSize: '0.875rem'
+            }}>$145.50</div>
+          </div>
+        </div>
+
+        {/* Logout Button */}
         <button
           style={{
             width: '100%',

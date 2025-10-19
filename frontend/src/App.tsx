@@ -6,7 +6,7 @@ import UserDashboard from './pages/UserDashboard';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import ProviderDashboard from './pages/ProviderDashboard';
-import { Wallet } from './pages/Wallet';
+import Wallet from './pages/Wallet';
 import './App.css';
 
 
