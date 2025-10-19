@@ -64,7 +64,7 @@ const ProviderDashboard: React.FC = () => {
         display: 'grid',
         gridTemplateColumns: '1.8fr 1fr',
         gap: '1.5rem',
-        marginBottom: '2.5rem'
+        marginBottom: '1.5rem'
       }}>
         {/* Left Column - Your GPU */}
         <div>
@@ -72,7 +72,7 @@ const ProviderDashboard: React.FC = () => {
             fontSize: '2.25rem',
             color: '#2d2d3a',
             fontWeight: '700',
-            marginBottom: '1.25rem',
+            marginBottom: '.20rem',
             marginTop: 0
           }}>Your GPU</h2>
 
@@ -193,7 +193,7 @@ const ProviderDashboard: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           gap: '1.25rem',
-          paddingTop: '4.5rem'
+          paddingTop: '3.5rem'
         }}>
           {/* Total Earned */}
           <div
@@ -293,7 +293,7 @@ const ProviderDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Section - Current Job and Recent Jobs side by side */}
+      {/* Bottom Section - Current Job and Recent Jobs */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: '1.8fr 1fr',
@@ -306,8 +306,8 @@ const ProviderDashboard: React.FC = () => {
             fontSize: '2.25rem',
             color: '#2d2d3a',
             fontWeight: '700',
-            marginBottom: '1.25rem',
-            marginTop: 0
+            marginBottom: '.20rem',
+            marginTop: '-17rem'
           }}>Current Job</h2>
 
           <div
@@ -406,7 +406,7 @@ const ProviderDashboard: React.FC = () => {
             fontSize: '2.25rem',
             color: '#2d2d3a',
             fontWeight: '700',
-            marginBottom: '1.25rem',
+            marginBottom: '.20rem',
             marginTop: 0
           }}>Recent Jobs</h2>
 
