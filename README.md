@@ -74,5 +74,15 @@ ray start --address='192.168.x.x:6379'
 
 # Run on main computer and watch it split a task between all connected nodes!
 python main.py
+
+# You can also run a test cluster (Windows). Make sure you are on the correct Python version or environment
+test_cluster.bat
 ```
 Right now, the it simply allocates the multiplication of multiple 3000x3000 matrices
+
+## Images
+
+<img width="1914" height="936" alt="Screenshot 2025-10-20 161027" src="https://github.com/user-attachments/assets/5e99a493-ce7d-47df-a01b-e9d5fe8153e6" />
+<img width="1900" height="939" alt="Screenshot 2025-10-20 161129" src="https://github.com/user-attachments/assets/091eab71-9451-4ef0-ba79-faedccbc6551" />
+<img width="1897" height="936" alt="Screenshot 2025-10-20 161212" src="https://github.com/user-attachments/assets/4357982b-b28c-41a4-af4b-b3a2bf9acc3c" />
+<img width="1904" height="874" alt="Screenshot 2025-10-20 161419" src="https://github.com/user-attachments/assets/04452d3b-716c-4a98-b3b8-8781f6b520c3" />
