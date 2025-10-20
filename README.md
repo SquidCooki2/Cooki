@@ -13,7 +13,7 @@ This was created for the 2025 Startup Hackathon @ UNCC.
 Big thanks to my teammates Aryan Kharva and Pranav Sadhu for creating the website.
 This repo represents a Minimum Viable Product (MVP). Stay tuned—big things are planned!
 
-## Overview (For recruiters 😘)
+## Overview (For the lovely recruiters out there 😘)
 Cooki is a monorepo that houses both the frontend and backend applications:  
 - `frontend/` – TypeScript + React (Vite), communicates with backend APIs  
 - `backend/` – Python + Django + SQLite for user data, integrates with OpenAI for the assistant  
