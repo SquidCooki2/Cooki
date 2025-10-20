@@ -5,7 +5,7 @@ Cooki GPU Services is a peer-to-peer GPU computing platform designed to leverage
 - Peer-to-Peer Resource Pooling: By tapping into the existing vast network of idle GPUs, Cooki maximizes resource utilization and offers users significant savings on computing costs.
 - GPU Allocation: Users simply describe their desired computing task, and Cooki can automatically handle the allocation of the appropriate GPU resources based on the task requirements.
 - Pay-per-Use Model: Users are charged based on the amount of computing power consumed for their task rather than on GPU model or rental time.
-- Win-Win: Hosts earn based on how much computing power was used
+- Win-Win: Hosts earn based on how much computing power was used.
 
 ## Acknowledgements
 This was created for the 2025 Startup Hackathon @ UNCC. 
