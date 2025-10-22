@@ -8,7 +8,7 @@ Cooki GPU Services is a peer-to-peer GPU computing platform designed to leverage
 - Win-Win: Hosts earn based on how much computing power was used.
 
 ## Acknowledgements
-This was created for the 2025 Startup Hackathon @ UNCC. 
+This was created for the 2025 Startup Hackathon @ UNCC. Won 'Most Technical'.
 
 Big thanks to my teammates Aryan Kharva and Pranav Sadhu for creating the website.
 This repo represents a Minimum Viable Product (MVP). Stay tuned—big things are planned!
